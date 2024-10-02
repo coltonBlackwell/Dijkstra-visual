@@ -1,5 +1,6 @@
 # Dijkstra-visual
 
-<!-- ![Output Image](Images/image.png) -->
+Pathfinding Vizualisation in Python
+
 
 <img src="Images/image.png" width="600">
