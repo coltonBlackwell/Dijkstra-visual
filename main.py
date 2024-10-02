@@ -2,8 +2,8 @@ from tkinter import messagebox, Tk
 import pygame
 import sys
 
-window_width = 500
-window_height = 500
+window_width = 1000
+window_height = 1000
 
 window = pygame.display.set_mode((window_width, window_height))
 
@@ -41,6 +41,9 @@ class Box:
             self.neighbours.append(grid[self.x][self.y - 1])
         if self.y < rows - 1:
             self.neighbours.append(grid[self.x][self.y + 1])
+
+pygame.font.init()
+font = pygame.font.SysFont("Times New Roman", 24)
 
 # Creating the Grid
 for i in range(columns):
@@ -128,6 +131,18 @@ def main():
                     box.draw(window, (90,90,90))
                 if box.target:
                     box.draw(window, (200, 200, 0))
+
+             # Render instructions text
+            instructions = [
+                "Instructions:",
+                "1. Left click to set starting block",
+                "2. Left click and hold to draw walls",
+                "3. Right click to set target",
+                "4. Press SPACE to run"
+            ]
+            for i, instruction in enumerate(instructions):
+                text_surface = font.render(instruction, True, (255, 255, 255))
+                window.blit(text_surface, (0, window_height - (len(instructions) - i) * 20 - 10))
 
         pygame.display.flip()
 
